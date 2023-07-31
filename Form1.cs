@@ -40,7 +40,7 @@ namespace Moorhuhn
         {
             timerInt++; // Erhöhen des Timer-Zählers
 
-            if (timerInt % 100 == 0) // Alle 100 Einheiten des Timer-Zählers ein Huhn spawnen
+            if (timerInt % 50 == 0) // Alle 100 Einheiten des Timer-Zählers ein Huhn spawnen
             {
                 SpawnHuhn(); // Methode zum Erzeugen eines neuen Huhns aufrufen
             }
@@ -96,7 +96,7 @@ namespace Moorhuhn
 
             pictureBox.Location = new Point(-100, spawnYPosition);
 
-            int score = new Random().Next(20, 50); // Zufälliger Punktwert für das Huhn
+            int score = new Random().Next(20, 100); // Zufälliger Punktwert für das Huhn
             pictureBox.Size = new Size(score, score); // Größe der PictureBox entsprechend des Punktwerts
             pictureBox.Tag = score; // Punktwert des Huhns in das Tag-Attribut der PictureBox schreiben
             pictureBox.Image = Image.FromFile(@"..\\..\\..\\Bilder\\huhn.gif"); // Laden des Huhn-Bildes aus einer Datei
@@ -111,10 +111,8 @@ namespace Moorhuhn
         }
 
         // In event method.
-        private async void NewPictureBox_Click(object sender, EventArgs e)
+        private async void NewPictureBox_Click(object sender, EventArgs e)   // Methode zum Behandeln des Klick-Events einer PictureBox (wenn der Spieler ein Huhn trifft)
         {
-            // Methode zum Behandeln des Klick-Events einer PictureBox (wenn der Spieler ein Huhn trifft)
-
             //Debug.WriteLine("Click!"); // Ausgabe einer Debug-Nachricht (Debugging-Zwecke)
             PictureBox pictureBox = (PictureBox)sender; // Das auslösende PictureBox-Objekt des Klick-Events
             pictureBox.Image = Image.FromFile(@"..\\..\\..\\Bilder\\huhn1.png"); // Ändern des Huhn-Bildes auf ein getroffenes Huhn
