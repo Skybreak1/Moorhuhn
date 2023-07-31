@@ -30,6 +30,7 @@
         {
             lblZeit = new Label();
             lblPunktzahl = new Label();
+            Restart = new Button();
             SuspendLayout();
             // 
             // lblZeit
@@ -50,11 +51,22 @@
             lblPunktzahl.TabIndex = 1;
             lblPunktzahl.Text = "label1";
             // 
+            // Restart
+            // 
+            Restart.Location = new Point(348, 4);
+            Restart.Name = "Restart";
+            Restart.Size = new Size(75, 23);
+            Restart.TabIndex = 2;
+            Restart.Text = "Restart";
+            Restart.UseVisualStyleBackColor = true;
+            Restart.Click += Restart_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Restart);
             Controls.Add(lblPunktzahl);
             Controls.Add(lblZeit);
             Name = "Form1";
@@ -68,5 +80,6 @@
 
         private Label lblZeit;
         private Label lblPunktzahl;
+        private Button Restart;
     }
 }

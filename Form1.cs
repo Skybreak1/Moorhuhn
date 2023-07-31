@@ -139,5 +139,28 @@ namespace Moorhuhn
                 Debug.WriteLine("Hintergrundbild nicht gefunden: " + imagePath);
             }
         }
+
+        private void Restart_Click(object sender, EventArgs e)
+        {
+            // Reset the game-related variables
+            timerInt = 600;
+            huhnCounter = 0;
+            gesamtscore = 0;
+            Zeit = 60;
+            lblPunktzahl.Text = gesamtscore.ToString();
+            lblZeit.Text = Zeit.ToString();
+
+            // Clear existing PictureBoxes
+            foreach (var pictureBox in pictureBoxList)
+            {
+                this.Controls.Remove(pictureBox);
+                pictureBox.Dispose();
+            }
+            pictureBoxList.Clear();
+
+            // Restart the timers
+            timerZeit.Start();
+            timer.Start();
+        }
     }
 }
