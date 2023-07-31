@@ -14,7 +14,7 @@ namespace Moorhuhn
         private List<PictureBox> pictureBoxList = new List<PictureBox>();
         private static System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private static System.Windows.Forms.Timer timerZeit = new System.Windows.Forms.Timer();
-        private int Zeit = 0;
+        private int Zeit = 60;
         private Label timerLabel;
         private int gesamtscore;
 
@@ -62,8 +62,15 @@ namespace Moorhuhn
 
         private void ZeitMessung(object myObject, EventArgs myEventArgs)
         {
-            Zeit++;
+            Zeit--;
             lblZeit.Text = Zeit.ToString();
+
+            if (Zeit <= 0)
+            {
+                timerZeit.Stop();
+                timer.Stop();
+                
+            }
         }
 
         private void SpawnHuhn()
@@ -84,15 +91,13 @@ namespace Moorhuhn
             pictureBox.BackColor = Color.Transparent;
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.BorderStyle = BorderStyle.None;
-            pictureBox.Image.RotateFlip(RotateFlipType.Rotate180FlipY);
+            //pictureBox.Image.RotateFlip(RotateFlipType.Rotate180FlipY);
 
             this.Controls.Add(pictureBox);
             pictureBoxList.Add(pictureBox);
-
             // add click event to the button.
             pictureBox.Click += new EventHandler(NewPictureBox_Click);
             //Debug.WriteLine(Cursor.Position.ToString());
-
         }
 
         // In event method.
