@@ -70,8 +70,6 @@ namespace Moorhuhn
         {
             //Debug.WriteLine("Spawne Huhn als button");
             PictureBox pictureBox = new PictureBox();
-
-            //Set name for a button to recognize it later.
             huhnCounter++;
             pictureBox.Name = "Butt" + huhnCounter;
 
@@ -86,7 +84,7 @@ namespace Moorhuhn
             pictureBox.BackColor = Color.Transparent;
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.BorderStyle = BorderStyle.None;
-            //pictureBox.Image.RotateFlip(RotateFlipType.Rotate180FlipY);
+            pictureBox.Image.RotateFlip(RotateFlipType.Rotate180FlipY);
 
             this.Controls.Add(pictureBox);
             pictureBoxList.Add(pictureBox);
@@ -100,7 +98,7 @@ namespace Moorhuhn
         // In event method.
         private async void NewPictureBox_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine("Click!");
+            //Debug.WriteLine("Click!");
             PictureBox pictureBox = (PictureBox)sender;
             pictureBox.Image = Image.FromFile(@"..\\..\\..\\Bilder\\huhn1.png");
             await Task.Delay(200);
