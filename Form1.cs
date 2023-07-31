@@ -22,6 +22,7 @@ namespace Moorhuhn
         {
             InitializeComponent(); // Initialisierung der Form-Komponenten
             SetBackgroundImage(); // Festlegen des Hintergrundbilds der Form
+            this.DoubleBuffered = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,7 +48,7 @@ namespace Moorhuhn
             for (int i = pictureBoxList.Count - 1; i >= 0; i--) // Schleife zum Bewegen der vorhandenen Hühner auf dem Bildschirm
             {
                 PictureBox pictureBox = pictureBoxList[i]; // Das aktuelle PictureBox-Objekt aus der Liste
-                pictureBox.Location = new Point(pictureBox.Location.X + 7, pictureBox.Location.Y); // Verschieben des Huhns nach rechts
+                pictureBox.Location = new Point(pictureBox.Location.X + 7, pictureBox.Location.Y + new Random().Next(-3, 4)); // Verschieben des Huhns nach rechts
 
                 if (pictureBox.Location.X > 2500) // Wenn das Huhn den rechten Rand des Bildschirms erreicht
                 {
@@ -84,11 +85,17 @@ namespace Moorhuhn
         {
             // Methode zum Erzeugen eines neuen Huhns (PictureBox)
 
-            PictureBox pictureBox = new PictureBox(); // Erzeugen eines neuen PictureBox-Objekts
-            huhnCounter++; // Zähler für die Hühner erhöhen
-            pictureBox.Name = "Butt" + huhnCounter; // Name des PictureBox-Objekts setzen (Butt1, Butt2, ...)
+            PictureBox pictureBox = new PictureBox();
+            huhnCounter++;
+            pictureBox.Name = "Butt" + huhnCounter;
 
-            pictureBox.Location = new Point(-100, new Random().Next(400)); // Position des Huhns setzen (Start außerhalb des Bildschirms, zufällige Y-Position)
+            int buttonHeight = Restart.Height; // Höhe des Buttons
+
+            
+            int spawnYPosition = new Random().Next(buttonHeight, this.ClientSize.Height - pictureBox.Height - this.ClientSize.Height / 100);
+
+            pictureBox.Location = new Point(-100, spawnYPosition);
+
             int score = new Random().Next(20, 50); // Zufälliger Punktwert für das Huhn
             pictureBox.Size = new Size(score, score); // Größe der PictureBox entsprechend des Punktwerts
             pictureBox.Tag = score; // Punktwert des Huhns in das Tag-Attribut der PictureBox schreiben
