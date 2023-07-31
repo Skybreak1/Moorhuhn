@@ -69,10 +69,13 @@ namespace Moorhuhn
             {
                 timerZeit.Stop();
                 timer.Stop();
-                
+                ShowResultMessage();
             }
         }
-
+        private void ShowResultMessage()
+        {
+            MessageBox.Show("Die Zeit ist vorbei! Dein Score: " + gesamtscore.ToString(), "Ergebnisse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         private void SpawnHuhn()
         {
             //Debug.WriteLine("Spawne Huhn als button");
