@@ -170,3 +170,10 @@ namespace Moorhuhn
         }
     }
 }
+// TO DO Liste:
+//  -Fadenkreuz
+//  -Highscores speichern (wie bei Autovermietung mit Excel)
+//  -Munition und Nachladen
+//  -Optische Schönheiten
+//  -Maybe Sound?
+//  -Hähnchen fallen nach unten--> Problem boxen übereinander
